@@ -1,4 +1,4 @@
-# Tiny CSV
+# Smol csv
 
 🚧 Work in progress
 

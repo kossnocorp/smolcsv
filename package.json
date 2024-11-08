@@ -1,7 +1,7 @@
 {
-  "name": "tinycsv",
+  "name": "smolcsv",
   "version": "0.1.0",
-  "description": "Tiny CSV parser and stringifier for the browser, web workers and Node.js",
+  "description": "Smol csv parser and stringifier for the browser, web workers and Node.js",
   "type": "module",
   "main": "index.cjs",
   "module": "index.js",
@@ -63,7 +63,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kossnocorp/tinycsv.git"
+    "url": "git+https://github.com/kossnocorp/smolcsv.git"
   },
   "keywords": [
     "tiny",
@@ -75,9 +75,9 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kossnocorp/tinycsv/issues"
+    "url": "https://github.com/kossnocorp/smolcsv/issues"
   },
-  "homepage": "https://github.com/kossnocorp/tinycsv#readme",
+  "homepage": "https://github.com/kossnocorp/smolcsv#readme",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.2",
     "@babel/cli": "^7.24.1",
