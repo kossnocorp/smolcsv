@@ -1,5 +1,4 @@
-node_modules
-/lib
-# Dev env
-.envrc
-.direnv
+# Node.js
+node_modules/
+# Dist
+/lib/
