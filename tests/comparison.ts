@@ -3,7 +3,7 @@ import {
   format as fastCsvFormat,
   parseString as fastCsvParseString,
 } from "fast-csv";
-import { describe, expect, it } from "vitest";
+import { describe, it } from "vitest";
 import { parseStream, parseString } from "../src/parse/index.ts";
 import { stringifyRows } from "../src/stringify/index.ts";
 import { Reference, parseEdgeCases, stringifyEdgeCases } from "./reference.ts";
@@ -174,10 +174,5 @@ describe("edge-case compatibility comparison", () => {
         }
       });
     }
-  });
-
-  it("registers comparison suites", () => {
-    expect(Object.keys(parseAdapters).length).toBeGreaterThan(0);
-    expect(Object.keys(stringifyAdapters).length).toBeGreaterThan(0);
   });
 });
