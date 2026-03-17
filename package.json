@@ -59,6 +59,8 @@
     }
   },
   "scripts": {
+    "types": "tsc --build",
+    "types:watch": "tsc --build --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "bench:internal": "oxnode benchmarks/internal.ts",
