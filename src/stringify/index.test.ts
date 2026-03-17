@@ -99,4 +99,27 @@ describe("stringifyRows", () => {
     const parsed = await parseString(csv);
     expect(parsed).toEqual(rows);
   });
+
+  it("allows semicolon output for locale-specific exports", async () => {
+    const rows = [
+      ["id", "value"],
+      ["1", "1,25"],
+    ];
+    const csv = stringifyRows(rows, { delimiter: ";" });
+    expect(csv).toBe("id;value\n1;1,25");
+    const parsed = await parseString(csv, { delimiter: ";" });
+    expect(parsed).toEqual(rows);
+  });
+
+  it("keeps formula-like content unchanged by default", () => {
+    const rows = [["=SUM(A1:A2)", "+1", "-2", "@foo"]];
+    const csv = stringifyRows(rows);
+    expect(csv).toBe("=SUM(A1:A2),+1,-2,@foo");
+  });
+
+  it("does not add BOM by default", () => {
+    const rows = [["id", "name"]];
+    const csv = stringifyRows(rows);
+    expect(csv.startsWith("\uFEFF")).toBe(false);
+  });
 });
