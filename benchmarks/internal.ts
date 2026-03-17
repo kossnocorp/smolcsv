@@ -1,5 +1,5 @@
 import b from "benny";
-import { detectDelimiter } from "./src/delimiter/index.ts";
+import { detectDelimiter } from "../src/delimiter/index.ts";
 
 const lines = ["a;b;c,d", "e|f;g,e"];
 

@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*.ts"],
+  "include": ["./*.ts", "src/**/*.ts", "benchmarks/**/*.ts"],
   "compilerOptions": {
     "outDir": "lib",
     "target": "ESNext",
@@ -14,5 +14,4 @@
     "skipLibCheck": true,
     "allowJs": true
   },
-  "exclude": []
 }
