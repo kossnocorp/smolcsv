@@ -1,9 +1,11 @@
 [tools]
-## Stack
-node = { version = "lts", postinstall = "corepack enable && node -v > .nvmrc" }
+# Stack
+node = "lts"
+pnpm = "latest"
 
 [settings]
 # Enable extra features
 experimental = true
 # Ignore idiomatic version files
 idiomatic_version_file_enable_tools = []
+
