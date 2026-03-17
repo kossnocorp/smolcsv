@@ -1,5 +1,5 @@
 import { defaultDelimiter } from "../delimiter/index.ts";
-import { CSVRow, CSVSettings } from "../types.ts";
+import type { Csv } from "../types.ts";
 
 /**
  * Stringifies CSV rows.
@@ -10,8 +10,8 @@ import { CSVRow, CSVSettings } from "../types.ts";
  * @returns Stringified CSV
  */
 export function stringifyRows(
-  rows: CSVRow[],
-  settings?: CSVSettings | undefined,
+  rows: Csv.Row[],
+  settings?: Csv.Settings | undefined,
 ): string {
   const delimiter = settings?.delimiter || defaultDelimiter;
 

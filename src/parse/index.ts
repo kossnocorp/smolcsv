@@ -1,16 +1,5 @@
 import { defaultDelimiter, detectDelimiter } from "../delimiter/index.ts";
-import { CSVRow, CSVSettings } from "../types.ts";
-
-/**
- * CSV parser settings.
- */
-export interface CSVParseSettings extends CSVSettings {
-  /** How many lines to probe when detecting delimiter (defaults to 2). */
-  delimiterProbeLines?: number | undefined;
-  /** Available delimiters to detect. */
-  delimiters?: string[] | undefined;
-}
-
+import type { Csv } from "../types.ts";
 /**
  * Parses a CSV line into an array of fields.
  *
@@ -19,7 +8,7 @@ export interface CSVParseSettings extends CSVSettings {
  *
  * @returns Array of fields
  */
-export function parseLine(line: string, delimiter: string): CSVRow {
+export function parseLine(line: string, delimiter: string): Csv.Row {
   const fields = [];
   let field = "";
   let quoted = false;
@@ -61,8 +50,8 @@ export function parseLine(line: string, delimiter: string): CSVRow {
  */
 export function parseStream(
   stream: ReadableStream<Uint8Array>,
-  settings?: CSVParseSettings | undefined
-): AsyncIterable<CSVRow> {
+  settings?: Csv.ParseSettings | undefined,
+): AsyncIterable<Csv.Row> {
   const decoder = new TextDecoder();
   const reader = stream.getReader();
 
@@ -138,8 +127,8 @@ export function parseStream(
  */
 export async function parseString(
   input: string,
-  settings?: CSVParseSettings
-): Promise<CSVRow[]> {
+  settings?: Csv.ParseSettings,
+): Promise<Csv.Row[]> {
   const stream = new ReadableStream({
     start(controller) {
       controller.enqueue(new TextEncoder().encode(input));
