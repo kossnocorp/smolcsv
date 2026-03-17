@@ -350,7 +350,6 @@ export const stringifyEdgeCases: Reference.Source<Reference.StringifyAdapter>[] 
         quote:
           "If the value contains ... a carriage return, or line feed character, then the whole value is prefixed and suffixed by the QUOTE character.",
       },
-      pending: true,
       async run({ stringify }) {
         const csv = await stringify([["a\rb", "c"]]);
         expect(csv).toBe('"a\rb",c');

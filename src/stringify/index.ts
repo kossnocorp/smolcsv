@@ -22,7 +22,8 @@ export function stringifyRows(
           if (
             field.includes('"') ||
             field.includes(delimiter) ||
-            field.includes("\n")
+            field.includes("\n") ||
+            field.includes("\r")
           ) {
             return '"' + field.replace(/"/g, '""') + '"';
           }
