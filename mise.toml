@@ -3,6 +3,9 @@
 node = "lts"
 pnpm = "latest"
 
+# Tools
+opencode = "latest"
+
 [settings]
 # Enable extra features
 experimental = true
