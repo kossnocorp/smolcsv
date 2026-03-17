@@ -63,6 +63,8 @@
     "types:watch": "tsc --build --watch",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test/comparison": "vitest run --mode comparison",
+    "test/comparison:watch": "vitest --mode comparison",
     "bench:internal": "oxnode benchmarks/internal.ts",
     "bench:comparison": "oxnode benchmarks/comparison.ts"
   },

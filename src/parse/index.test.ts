@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { parseEdgeCases } from "../../tests/reference.ts";
 import { parseLine, parseStream, parseString } from "./index.ts";
 
 describe("parseLine", () => {
@@ -185,5 +186,33 @@ describe("parseString", () => {
       ["z", "x", "c"],
       ["x", "y", "z"],
     ]);
+  });
+
+  describe("edge cases", () => {
+    const adapter = {
+      parseString,
+      async parseBytes(
+        chunks: Uint8Array[],
+        settings?: unknown,
+      ): Promise<string[][]> {
+        const stream = new ReadableStream<Uint8Array>({
+          start(controller) {
+            for (const chunk of chunks) controller.enqueue(chunk);
+            controller.close();
+          },
+        });
+        const rows = [];
+        for await (const row of parseStream(stream, settings as any))
+          rows.push(row);
+        return rows;
+      },
+    };
+
+    for (const edgeCase of parseEdgeCases) {
+      const testMethod = edgeCase.pending ? it.skip : it;
+      testMethod(edgeCase.name, async () => {
+        await edgeCase.run(adapter);
+      });
+    }
   });
 });

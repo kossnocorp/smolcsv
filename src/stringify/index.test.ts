@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { stringifyEdgeCases } from "../../tests/reference.ts";
 import { parseString } from "../parse/index.ts";
 import { stringifyRows } from "./index.ts";
 
@@ -121,5 +122,14 @@ describe("stringifyRows", () => {
     const rows = [["id", "name"]];
     const csv = stringifyRows(rows);
     expect(csv.startsWith("\uFEFF")).toBe(false);
+  });
+
+  describe("edge cases", () => {
+    for (const edgeCase of stringifyEdgeCases) {
+      const testMethod = edgeCase.pending ? it.skip : it;
+      testMethod(edgeCase.name, async () => {
+        await edgeCase.run({ stringify: stringifyRows });
+      });
+    }
   });
 });

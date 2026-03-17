@@ -11,7 +11,7 @@ import { CSVRow, CSVSettings } from "../types.ts";
  */
 export function stringifyRows(
   rows: CSVRow[],
-  settings?: CSVSettings | undefined
+  settings?: CSVSettings | undefined,
 ): string {
   const delimiter = settings?.delimiter || defaultDelimiter;
 
@@ -28,7 +28,7 @@ export function stringifyRows(
           }
           return field;
         })
-        .join(delimiter)
+        .join(delimiter),
     )
     .join("\n");
 }
